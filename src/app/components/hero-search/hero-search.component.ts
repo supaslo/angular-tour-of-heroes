@@ -6,11 +6,15 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../models/hero';
+import { HeroService } from '../../services/hero.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hero-search',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './hero-search.component.html',
   styleUrls: [ './hero-search.component.css' ]
 })

@@ -3,8 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
+import { Hero } from '../models/hero';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -12,7 +11,9 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  constructor(private http: HttpClient, private messageService: MessageService) { }
+
+  private heroesUrl = 'http://localhost:3001/heroes';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -102,8 +103,4 @@ export class HeroService {
     );
   }
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
 }
